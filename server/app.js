@@ -7,17 +7,19 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.get('/food/:id', function(req, res){
-  //console.log("Passing some food");
+
   var food = req.params.id;
   console.log(food);
   if(food == "apples"){
-  res.send("Apple");
+  res.send("Apples");
 } else if (food == "pears"){
-  res.send("Pear");
+  res.send("Pears");
 } else if (food == "bananas"){
-  res.send("Banana");
+  res.send("Bananas");
 } else if (food=="pizza"){
   res.send("Pizza");
+}else {
+  res.send("No match");
 }
 });
 

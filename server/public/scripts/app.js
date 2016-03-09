@@ -51,49 +51,37 @@ function feedWithBanana(){
 }
 
 function feedWithPizza(){
-  //console.log("You clicked on Apples");
   $.ajax({
     type: "GET",
     url: "/food/pizza",
     success: function(food){
       console.log("Here is food Aesop! ", food);
       feedAesopFood(food);
-
     }
   });
 }
-//
-// function feedWithPears(){
-//   console.log("You clicked on Pears");
-//   $.ajax({
-//     type: "GET",
-//     url: "/food",
-//     success: function(food){
-//       console.log("Here is food Aesop! ", food);
-//     }
-//   });
-// }
+
 
 var timer = setInterval(aesopWantsFood, 5000);
 
 function aesopWantsFood(){
   currentRequest = aesopFoods[randomNumber(0, aesopFoods.length - 1)];
-  console.log(currentRequest);
+  $('.aesop-wants').text(currentRequest);
 }
 
 function feedAesopFood(food){
   if(food == currentRequest){
     correct++;
-    $('.buttons').append('<p>correct ' + correct + '</p>');
+    $('.correct').text(correct);
   } else {
     incorrect++;
-    $('.buttons').append('<p>incorrect ' + incorrect + '</p>');
+    $('.incorrect').text(incorrect);
   }
 
 
   aesopWantsFood();
   clearInterval(timer);
-  timer = setInterval(aesopWantsFood, 7000);
+  timer = setInterval(aesopWantsFood, 5000);
 }
 
 var randomNumber = function(min,max){
